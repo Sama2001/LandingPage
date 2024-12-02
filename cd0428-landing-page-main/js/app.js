@@ -82,26 +82,28 @@ function buildNavigation() {
     });
 }
 
+
 /**
- * Helper Function to Set Active Section
+ * Function to Set Active Section
  */
 function setActiveSection() {
     sections.forEach((section, index) => {
-        // Get the position of the section relative to the viewport
         const sectionRect = section.getBoundingClientRect();
 
+        // Adjust logic to account for smaller viewports
         if (sectionRect.top >= 0 && sectionRect.top <= window.innerHeight / 2) {
             section.classList.add('your-active-class');
-            
             navbarLinks[index].classList.add('active');
         } else {
             section.classList.remove('your-active-class');
-            
-            // Remove the 'active' class from the navbar link
             navbarLinks[index].classList.remove('active');
         }
     });
 }
+
+// Attach this function to scroll events
+window.addEventListener('scroll', setActiveSection);
+
 
 /**
  * Smooth Scrolling to Section (Explicit Method)
@@ -141,3 +143,5 @@ function init() {
 
 // Initialize the page 
 document.addEventListener('DOMContentLoaded', init);
+
+//update
