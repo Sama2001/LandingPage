@@ -200,6 +200,8 @@ section:nth-of-type(3n + 1) .landing__container::after {
 section.your-active-class {
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    transition: background-color 0.3s ease;
+
 }
 
 section.your-active-class .landing__container::before {
@@ -241,20 +243,10 @@ section.your-active-class {
     transition: background-color 0.3s ease;
 }
 
-/* Navbar adjustments for Mobile */
-@media (max-width: 768px) {
+/* Adjust navbar for small devices */
+@media screen and (max-width: 768px) {
     .navbar__menu {
-        display: none; /* Hide the menu by default on mobile */
-    }
-
-    .navbar__toggle {
-        display: block; /* Show the hamburger button on mobile */
-    }
-    
-
-    /* When the menu is active, show the navbar items vertically */
-    .navbar__menu.active {
-        display: flex;
+        display: none;
         flex-direction: column;
         background-color: rgba(0, 0, 0, 0.8);
         position: fixed;
@@ -263,34 +255,36 @@ section.your-active-class {
         width: 100%;
         height: 100vh;
         z-index: 10;
-        transition: transform 0.3s ease;  /* Smooth transition */
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
     }
-}
 
-/* Navbar Menu on Desktop (above 768px) */
-@media (min-width: 769px) {
+    .navbar__menu.active {
+        display: flex;
+    }
+
     .navbar__toggle {
-        display: none;  /* Hide the hamburger button on large screens */
-    }
-
-    .navbar__menu {
-        display: flex;  /* Display navbar horizontally on large screens */
-        flex-direction: row;
-        background-color: transparent;  /* No background */
-        position: static;  /* Ensure it's in the normal flow of the page */
+        display: block;
+        font-size: 2rem;
+        color: #000;
+        background: transparent;
+        border: none;
     }
 }
 
-/* Adjustments for Tablet and Larger Screens */
-@media (min-width: 35em) {
-    h1 {
-        font-size: 5em; /* Adjust for larger devices */
-        margin: 3em 4rem;
+/* Show navbar horizontally on larger screens */
+@media screen and (min-width: 769px) {
+    .navbar__menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
     }
 
-    /* Make the landing container wider on larger screens */
-    .landing__container {
-        max-width: 60em;
-        padding: 4em;
+    .navbar__toggle {
+       display: none;
+        color: black;
     }
-} /*nn*/
+}
+/*update*/
